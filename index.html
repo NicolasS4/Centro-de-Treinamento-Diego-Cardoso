@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Treinamento Diego Cardoso</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="light-theme">
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Centro de Treinamento Diego Cardoso">
+                <span>Centro de Treinamento Diego Cardoso</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#schedule">Horários</a></li>
+                    <li><a href="#pricing">Planos</a></li>
+                    <li><a href="#professors">Professores</a></li>
+                    <li><a href="#benefits">Benefícios</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="theme-switch-wrapper">
+                <span class="theme-switch-label">Modo Escuro</span>
+                <label class="theme-switch">
+                    <input type="checkbox" id="theme-checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-overlay">
+            <div class="container">
+                <h1 class="animate-fade-in">O objetivo é criar pessoas preparadas para a vida e campeões para o mundo</h1>
+                <p class="animate-fade-in-delay">Jiu-Jitsu para todas as idades e níveis</p>
+                <a href="#contact" class="btn btn-primary animate-fade-in-delay-2">Comece Agora</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Sobre Nossa Academia</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>No Centro de Treinamento Diego Cardoso, oferecemos aulas de Jiu-Jitsu para todas as idades e níveis, desde iniciantes até competidores. Nossa metodologia é focada no desenvolvimento técnico, físico e mental dos alunos.</p>
+                    <p>Turmas divididas por idade, aulas personalizadas, iniciantes e avançados, hobby e competição.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-users"></i>
+                            <h3>Turmas Divididas</h3>
+                            <p>Por idade e nível técnico</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-user-graduate"></i>
+                            <h3>Aulas Personalizadas</h3>
+                            <p>Atendimento individualizado</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-trophy"></i>
+                            <h3>Hobby & Competição</h3>
+                            <p>Para todos os objetivos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="images/academy-interior.jpg" alt="Interior da Academia">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="schedule" class="schedule">
+        <div class="container">
+            <h2>Horários das Aulas</h2>
+            <div class="schedule-container">
+                <div class="schedule-day">
+                    <h3>Segunda, Quarta e Sexta</h3>
+                    <div class="schedule-items">
+                        <div class="schedule-item">
+                            <span class="time">09:00 - 10:00</span>
+                            <span class="class">Juvenil e Adultos</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span class="time">16:30 - 17:30</span>
+                            <span class="class">Juvenil e Adultos</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span class="time">17:30 - 18:30</span>
+                            <span class="class">Kids e Infanto Juvenil</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span class="time">18:30 - 19:30</span>
+                            <span class="class">Kids e Infanto Juvenil</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span class="time">19:30 - 20:30</span>
+                            <span class="class">Juvenil e Adultos</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span class="time">21:00 - 22:00</span>
+                            <span class="class">Juvenil e Adultos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2>Nossos Planos</h2>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Kids</h3>
+                    <div class="price">R$ 60<span>/mês</span></div>
+                    <ul>
+                        <li>Aulas 3x na semana</li>
+                        <li>Aula didática</li>
+                        <li>Acompanhamento técnico</li>
+                        <li>Eventos internos</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">Matricule-se</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Adultos</h3>
+                    <div class="price">R$ 60<span>/mês</span></div>
+                    <ul>
+                        <li>Aulas 3x na semana</li>
+                        <li>Guia técnico</li>
+                        <li>Acompanhamento técnico</li>
+                        <li>Preparação física</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Matricule-se</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Competição</h3>
+                    <div class="price">R$ 60<span>/mês</span></div>
+                    <ul>
+                        <li>Aulas pelo menos 3x na semana</li>
+                        <li>Preparação competitiva</li>
+                        <li>Treinamento específico</li>
+                        <li>Suporte para campeonatos</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">Matricule-se</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="professors" class="professors">
+        <div class="container">
+            <h2>Nossos Professores</h2>
+            <div class="professors-grid">
+                <div class="professor-card">
+                    <div class="professor-image">
+                        <img src="images/professor-diego.jpg" alt="Professor Diego Cardoso">
+                    </div>
+                    <h3>Diego Cardoso</h3>
+                    <p>Faixa Preta - Fundador</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/c.cardoso_diego/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="professor-card">
+                    <div class="professor-image">
+                        <img src="images/professor-samara.jpg" alt="Professora Samara Cardoso">
+                    </div>
+                    <h3>Samara Campos</h3>
+                    <p>Faixa Preta - Instrutora</p>
+                    <div class="social-links">
+                        <!-- <a href="#"><i class="fab fa-instagram"></i></a> -->
+                    </div>
+                </div>
+                <div class="professor-card">
+                    <div class="professor-image">
+                        <img src="images/professor-silviane.jpg" alt="Professora Silviane Tavares">
+                    </div>
+                    <h3>Silviane Tavares</h3>
+                    <p>Faixa Preta - Coordenadora</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/silvi._ta/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" class="benefits">
+        <div class="container">
+            <h2>Benefícios do Jiu-Jitsu</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Autodefesa</h3>
+                    <p>Aprenda técnicas eficazes para se defender em situações de risco.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Condicionamento Físico</h3>
+                    <p>Melhore sua resistência, força e flexibilidade com treinos completos.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Disciplina Mental</h3>
+                    <p>Desenvolva foco, concentração e controle emocional.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Socialização</h3>
+                    <p>Faça parte de uma comunidade unida e faça novas amizades.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <h3>Autoestima</h3>
+                    <p>Ganhe confiança e autoestima com a superação de desafios.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Competição</h3>
+                    <p>Opportunidade de competir e testar suas habilidades.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Entre em Contato</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Informações de Contato</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Tv São Francisco N145, Campina Icoaraci</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p>(91) 98176-6737</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p>(91) 98086-5679</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <p>Segunda a Sexta: 9h às 22h</p>
+                    </div>
+                    <div class="map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3988.798346191794!2d-48.47307000000001!3d-1.2955819999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMcKwMTcnNDQuMSJTIDQ4wrAyOCcyMy4xIlc!5e0!3m2!1spt-BR!2sbr!4v1756433152987!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!4v1756433029401!6m8!1m7!1syICJ4QZpUWYRoMAddstLLA!2m2!1d-1.295602172130839!2d-48.47301598925311!3f39.25746355131028!4f-9.402789339460327!5f1.5341542791169682" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+</div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="Centro de Treinamento Diego Cardoso">
+                    <p>O objetivo é criar pessoas preparadas para a vida e campeões para o mundo</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="#schedule">Horários</a></li>
+                        <li><a href="#pricing">Planos</a></li>
+                        <li><a href="#professors">Professores</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Tv São Francisco N145, Campina Icoaraci</p>
+                    <p><i class="fas fa-phone"></i> (91) 98176-6737</p>
+                    <p><i class="fas fa-phone"></i> (91) 98086-5679</p>
+                </div>
+                <div class="footer-social">
+                    <h4>Siga-nos</h4>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/ct_diegocardoso/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Centro de Treinamento Diego Cardoso.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="styles/theme-switcher.js"></script>
+</body>
+</html>
