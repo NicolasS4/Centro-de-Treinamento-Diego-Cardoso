@@ -198,7 +198,6 @@ input:checked + .slider:before {
     position: relative;
     padding: 2rem;
     color: white;
-    z-index: auto;
 }
 
 /* Fallback para caso a imagem não carregue */
