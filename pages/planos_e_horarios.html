@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planos & Horários - Centro de Treinamento Diego Cardoso</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        .tab-btn {
+            padding: 15px 30px;
+            background: none;
+            border: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: relative;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+        
+        .tab-btn.active {
+            color: var(--primary-color);
+        }
+        
+        .tab-btn.active:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-color);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .info-card {
+            background: var(--accent-color);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        .info-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-family: 'Oswald', sans-serif;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+        
+        .comparison-table th {
+            background: var(--primary-color);
+            color: white;
+            font-family: 'Oswald', sans-serif;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background: var(--card-bg);
+        }
+        
+        .highlight {
+            background: var(--primary-color);
+            color: white;
+            font-weight: bold;
+        }
+        
+        .benefit-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .benefit-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .benefit-list li:before {
+            content: "✓";
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body class="light-theme">
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="../images/logo/logo.png" alt="Centro de Treinamento Diego Cardoso" id="main-logo">
+                <span>Centro de Treinamento Diego Cardoso</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Início</a></li>
+                    <li><a href="../index.html#about">Sobre</a></li>
+                    <li><a href="professores.html">Professores</a></li>
+                    <li><a href="nossos_atletas.html">Nossos Atletas</a></li>
+                    <li><a href="planos_e_horarios.html">Planos & Horários</a></li>
+                    <li><a href="campeonatos.html">Campeonatos</a></li>
+                    <li><a href="../index.html#contact">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="theme-switch-wrapper">
+                <span class="theme-switch-label">Modo Escuro</span>
+                <label class="theme-switch">
+                    <input type="checkbox" id="theme-checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-internal">
+        <div class="container">
+            <h1>Planos & Horários</h1>
+            <p>Encontre o plano perfeito para sua jornada no Jiu-Jitsu</p>
+        </div>
+    </section>
+
+    <section class="plans-schedule">
+        <div class="container">
+            <div class="page-intro">
+                <p>Oferecemos diferentes modalidades para atender às necessidades de cada aluno, desde crianças iniciantes até atletas de competição. Todos os planos incluem acompanhamento técnico individualizado e participação em eventos internos.</p>
+            </div>
+            
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="horarios">Horários</button>
+                <button class="tab-btn" data-tab="planos">Planos</button>
+                <button class="tab-btn" data-tab="comparar">Comparar Planos</button>
+            </div>
+            
+            <!-- Tab Horários -->
+            <div id="horarios" class="tab-content active">
+                <div class="info-card">
+                    <h3>Horários das Aulas</h3>
+                    <p>Todas as turmas têm aulas de Segunda, Quarta e Sexta-feira.</p>
+                    
+                    <div class="schedule-container">
+                        <div class="schedule-day">
+                            <div class="schedule-items">
+                                <div class="schedule-item">
+                                    <span class="time">09:00 - 10:00</span>
+                                    <span class="class">Juvenil e Adultos</span>
+                                </div>
+                                <div class="schedule-item">
+                                    <span class="time">16:30 - 17:30</span>
+                                    <span class="class">Juvenil e Adultos</span>
+                                </div>
+                                <div class="schedule-item">
+                                    <span class="time">17:30 - 18:30</span>
+                                    <span class="class">Kids e Infanto Juvenil</span>
+                                </div>
+                                <div class="schedule-item">
+                                    <span class="time">18:30 - 19:30</span>
+                                    <span class="class">Kids e Infanto Juvenil</span>
+                                </div>
+                                <div class="schedule-item">
+                                    <span class="time">19:30 - 20:30</span>
+                                    <span class="class">Juvenil e Adultos</span>
+                                </div>
+                                <div class="schedule-item">
+                                    <span class="time">21:00 - 22:00</span>
+                                    <span class="class">Juvenil e Adultos</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="schedule-notes" style="margin-top: 30px; padding: 20px; background: var(--card-bg); border-radius: 5px;">
+                        <h4>Observações Importantes:</h4>
+                        <ul>
+                            <li>Chegar 15 minutos antes do horário da aula</li>
+                            <li>Uniforme completo obrigatório (kimono e faixa)</li>
+                            <li>Turmas divididas por idade e nível técnico</li>
+                            <li>Aulas extras disponíveis para competidores</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tab Planos -->
+            <div id="planos" class="tab-content">
+                <div class="pricing-cards">
+                    <div class="pricing-card">
+                        <h3>Kids</h3>
+                        <div class="price">R$ 60<span>/mês</span></div>
+                        <ul class="benefit-list">
+                            <li>Aulas 3x na semana</li>
+                            <li>Aula didática especializada</li>
+                            <li>Acompanhamento técnico individual</li>
+                            <li>Eventos internos e comemorativos</li>
+                            <li>Desenvolvimento psicomotor</li>
+                            <li>Valores e disciplina</li>
+                        </ul>
+                        <a href="../index.html#contact" class="btn btn-outline">Matricule-se</a>
+                    </div>
+                    
+                    <div class="pricing-card featured">
+                        <h3>Adultos</h3>
+                        <div class="price">R$ 60<span>/mês</span></div>
+                        <ul class="benefit-list">
+                            <li>Aulas 3x na semana</li>
+                            <li>Guia técnico completo</li>
+                            <li>Acompanhamento técnico</li>
+                            <li>Preparação física integrada</li>
+                            <li>Aulas de defesa pessoal</li>
+                            <li>Acesso à comunidade do CT</li>
+                        </ul>
+                        <a href="../index.html#contact" class="btn btn-primary">Matricule-se</a>
+                    </div>
+                    
+                    <div class="pricing-card">
+                        <h3>Competição</h3>
+                        <div class="price">R$ 60<span>/mês</span></div>
+                        <ul class="benefit-list">
+                            <li>Aulas pelo menos 3x na semana</li>
+                            <li>Preparação competitiva avançada</li>
+                            <li>Treinamento específico por categoria</li>
+                            <li>Suporte completo para campeonatos</li>
+                            <li>Análise de vídeos e adversários</li>
+                            <li>Preparação mental e estratégica</li>
+                        </ul>
+                        <a href="../index.html#contact" class="btn btn-outline">Matricule-se</a>
+                    </div>
+                </div>
+                
+                <div class="info-card" style="margin-top: 40px;">
+                    <h3>Informações Adicionais</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                        <div>
+                            <h4>Formas de Pagamento</h4>
+                            <ul>
+                                <li>Dinheiro</li>
+                                <li>PIX</li>
+                                <li>Cartão de crédito</li>
+                                <li>Débito automático</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>O que está incluso</h4>
+                            <ul>
+                                <li>Uso do espaço</li>
+                                <li>Aulas regulares</li>
+                                <li>Acompanhamento</li>
+                                <li>Participação em eventos</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Primeira Aula</h4>
+                            <p>A primeira aula experimental é gratuita! Entre em contato para agendar.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tab Comparar -->
+            <div id="comparar" class="tab-content">
+                <div class="info-card">
+                    <h3>Comparação de Planos</h3>
+                    
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Benefício</th>
+                                <th>Kids</th>
+                                <th>Adultos</th>
+                                <th>Competição</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Aulas por semana</td>
+                                <td>3x</td>
+                                <td>3x</td>
+                                <td>3x + extras</td>
+                            </tr>
+                            <tr>
+                                <td>Preparação física</td>
+                                <td>Básica</td>
+                                <td>Integrada</td>
+                                <td>Avançada</td>
+                            </tr>
+                            <tr>
+                                <td>Acompanhamento técnico</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓✓</td>
+                            </tr>
+                            <tr>
+                                <td>Suporte para campeonatos</td>
+                                <td>-</td>
+                                <td>Opcional</td>
+                                <td>Completo</td>
+                            </tr>
+                            <tr>
+                                <td>Aulas específicas</td>
+                                <td>Didática</td>
+                                <td>Defesa pessoal</td>
+                                <td>Estratégia competitiva</td>
+                            </tr>
+                            <tr>
+                                <td>Análise de vídeo</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>✓</td>
+                            </tr>
+                            <tr>
+                                <td>Preparação mental</td>
+                                <td>-</td>
+                                <td>Básica</td>
+                                <td>Avançada</td>
+                            </tr>
+                            <tr>
+                                <td>Eventos internos</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                                <td>✓</td>
+                            </tr>
+                            <tr>
+                                <td class="highlight">Valor mensal</td>
+                                <td class="highlight">R$ 60</td>
+                                <td class="highlight">R$ 60</td>
+                                <td class="highlight">R$ 60</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div style="text-align: center; margin-top: 30px;">
+                        <a href="../index.html#contact" class="btn btn-primary">Entre em contato para mais informações</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../images/logo/logo.png" alt="Centro de Treinamento Diego Cardoso" id="footer-logo">
+                    <p>O objetivo é criar pessoas preparadas para a vida e campeões para o mundo</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="../index.html">Início</a></li>
+                        <li><a href="../index.html#about">Sobre</a></li>
+                        <li><a href="professores.html">Professores</a></li>
+                        <li><a href="nossos_atletas.html">Nossos Atletas</a></li>
+                        <li><a href="planos_e_horarios.html">Planos & Horários</a></li>
+                        <li><a href="campeonatos.html">Campeonatos</a></li>
+                        <li><a href="../index.html#contact">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Tv São Francisco N°145, Campina Icoaraci</p>
+                    <p><i class="fas fa-phone"></i> (91) 98176-6737</p>
+                    <p><i class="fas fa-phone"></i> (91) 98086-5679</p>
+                </div>
+                <div class="footer-social">
+                    <h4>Siga-nos</h4>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/ct_diegocardoso/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Centro de Treinamento Diego Cardoso.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../styles/theme-switcher.js"></script>
+    <script>
+        // Sistema de tabs
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all buttons and contents
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding content
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
