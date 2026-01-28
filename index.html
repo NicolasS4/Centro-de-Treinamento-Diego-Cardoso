@@ -14,17 +14,17 @@
     <header>
         <div class="container">
             <div class="logo">
-                <img src="images/logo.png" alt="Centro de Treinamento Diego Cardoso">
+                <img src="images/logo/logo.png" alt="Centro de Treinamento Diego Cardoso" id="main-logo">
                 <span>Centro de Treinamento Diego Cardoso</span>
             </div>
             <nav>
                 <ul>
                     <li><a href="#home">Início</a></li>
                     <li><a href="#about">Sobre</a></li>
-                    <li><a href="#schedule">Horários</a></li>
-                    <li><a href="#pricing">Planos</a></li>
-                    <li><a href="#professors">Professores</a></li>
-                    <li><a href="#benefits">Benefícios</a></li>
+                    <li><a href="pages/professores.html">Professores</a></li>
+                    <li><a href="pages/nossos_atletas.html">Nossos Atletas</a></li>
+                    <li><a href="pages/planos_e_horarios.html">Planos & Horários</a></li>
+                    <li><a href="pages/campeonatos.html">Campeonatos</a></li>
                     <li><a href="#contact">Contato</a></li>
                 </ul>
             </nav>
@@ -44,8 +44,7 @@
     <section id="home" class="hero">
         <div class="hero-overlay">
             <div class="container">
-                <br><br><br><br>
-                <h1 class="aslaanimate-fade-in">O objetivo é criar pessoas preparadas para a vida e campeões para o mundo</h1>
+                <h1 class="animate-fade-in">O objetivo é criar pessoas preparadas para a vida e campeões para o mundo</h1>
                 <p class="animate-fade-in-delay">Jiu-Jitsu para todas as idades e níveis</p>
                 <a href="#contact" class="btn btn-primary animate-fade-in-delay-2">Comece Agora</a>
             </div>
@@ -76,125 +75,13 @@
                             <p>Para todos os objetivos</p>
                         </div>
                     </div>
+                    <div class="cta-buttons">
+                        <a href="pages/professores.html" class="btn btn-primary">Conheça Nossos Professores</a>
+                        <a href="pages/nossos_atletas.html" class="btn btn-outline">Veja Nossos Atletas</a>
+                    </div>
                 </div>
                 <div class="about-image">
-                    <img src="images/academy-interior.jpg" alt="Interior da Academia">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="schedule" class="schedule">
-        <div class="container">
-            <h2>Horários das Aulas</h2>
-            <div class="schedule-container">
-                <div class="schedule-day">
-                    <h3>Segunda, Quarta e Sexta</h3>
-                    <div class="schedule-items">
-                        <div class="schedule-item">
-                            <span class="time">09:00 - 10:00</span>
-                            <span class="class">Juvenil e Adultos</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="time">16:30 - 17:30</span>
-                            <span class="class">Juvenil e Adultos</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="time">17:30 - 18:30</span>
-                            <span class="class">Kids e Infanto Juvenil</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="time">18:30 - 19:30</span>
-                            <span class="class">Kids e Infanto Juvenil</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="time">19:30 - 20:30</span>
-                            <span class="class">Juvenil e Adultos</span>
-                        </div>
-                        <div class="schedule-item">
-                            <span class="time">21:00 - 22:00</span>
-                            <span class="class">Juvenil e Adultos</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="pricing" class="pricing">
-        <div class="container">
-            <h2>Nossos Planos</h2>
-            <div class="pricing-cards">
-                <div class="pricing-card">
-                    <h3>Kids</h3>
-                    <div class="price">R$ 60<span>/mês</span></div>
-                    <ul>
-                        <li>Aulas 3x na semana</li>
-                        <li>Aula didática</li>
-                        <li>Acompanhamento técnico</li>
-                        <li>Eventos internos</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline">Matricule-se</a>
-                </div>
-                <div class="pricing-card featured">
-                    <h3>Adultos</h3>
-                    <div class="price">R$ 60<span>/mês</span></div>
-                    <ul>
-                        <li>Aulas 3x na semana</li>
-                        <li>Guia técnico</li>
-                        <li>Acompanhamento técnico</li>
-                        <li>Preparação física</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-primary">Matricule-se</a>
-                </div>
-                <div class="pricing-card">
-                    <h3>Competição</h3>
-                    <div class="price">R$ 60<span>/mês</span></div>
-                    <ul>
-                        <li>Aulas pelo menos 3x na semana</li>
-                        <li>Preparação competitiva</li>
-                        <li>Treinamento específico</li>
-                        <li>Suporte para campeonatos</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline">Matricule-se</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="professors" class="professors">
-        <div class="container">
-            <h2>Nossos Professores</h2>
-            <div class="professors-grid">
-                <div class="professor-card">
-                    <div class="professor-image">
-                        <img src="images/professor-diego.jpg" alt="Professor Diego Cardoso">
-                    </div>
-                    <h3>Diego Cardoso</h3>
-                    <p>Faixa Preta - Fundador</p>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/c.cardoso_diego/"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="professor-card">
-                    <div class="professor-image">
-                        <img src="images/professor-samara.jpg" alt="Professora Samara Cardoso">
-                    </div>
-                    <h3>Samara Campos</h3>
-                    <p>Faixa Preta - Instrutora</p>
-                    <div class="social-links">
-                        <!-- <a href="#"><i class="fab fa-instagram"></i></a> -->
-                    </div>
-                </div>
-                <div class="professor-card">
-                    <div class="professor-image">
-                        <img src="images/professor-silviane.jpg" alt="Professora Silviane Tavares">
-                    </div>
-                    <h3>Silviane Tavares</h3>
-                    <p>Faixa Preta - Coordenadora</p>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/silvi._ta/"><i class="fab fa-instagram"></i></a>
-                    </div>
+                    <img src="images/ct/academy-interior.jpg" alt="Interior da Academia">
                 </div>
             </div>
         </div>
@@ -273,25 +160,30 @@
                         <p>Segunda a Sexta: 9h às 22h</p>
                     </div>
                     <div class="map">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d249.2998417696324!2d-48.47288185857776!3d-1.2961394486252995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a466993df741f7%3A0xd9ed4e13527e7e4d!2sR.%20Sarg.%20Joaquim%20Resende%2C%20147%20-%20Campina%20de%20Icoaraci%2C%20Bel%C3%A9m%20-%20PA%2C%2066813-140!5e0!3m2!1spt-BR!2sbr!4v1769618830981!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><iframe src="https://www.google.com/maps/embed?pb=!4v1769618580425!6m8!1m7!1sSOAxosLb5Xbmo_kAONSKgQ!2m2!1d-1.296105068351123!2d-48.47257532576999!3f115.96787585060724!4f-3.074838009219789!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-</div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!4v1769627940226!6m8!1m7!1sSOAxosLb5Xbmo_kAONSKgQ!2m2!1d-1.296105068351123!2d-48.47257532576999!3f118.32930666733013!4f1.5240912970436682!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d249.2998417696324!2d-48.47288185857776!3d-1.2961394486252995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a466993df741f7%3A0xd9ed4e13527e7e4d!2sR.%20Sarg.%20Joaquim%20Resende%2C%20147%20-%20Campina%20de%20Icoaraci%2C%20Bel%C3%A9m%20-%20PA%2C%2066813-140!5e0!3m2!1spt-BR!2sbr!4v1769618830981!5m2!1spt-BR!2sbr" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="images/logo.png" alt="Centro de Treinamento Diego Cardoso">
+                    <img src="images/logo/logo.png" alt="Centro de Treinamento Diego Cardoso" id="footer-logo">
                     <p>O objetivo é criar pessoas preparadas para a vida e campeões para o mundo</p>
                 </div>
                 <div class="footer-links">
                     <h4>Navegação</h4>
                     <ul>
-                        <li><a href="#home">Início</a></li>
+                        <li><a href="index.html">Início</a></li>
                         <li><a href="#about">Sobre</a></li>
-                        <li><a href="#schedule">Horários</a></li>
-                        <li><a href="#pricing">Planos</a></li>
-                        <li><a href="#professors">Professores</a></li>
+                        <li><a href="pages/professores.html">Professores</a></li>
+                        <li><a href="pages/nossos_atletas.html">Nossos Atletas</a></li>
+                        <li><a href="pages/planos_e_horarios.html">Planos & Horários</a></li>
+                        <li><a href="pages/campeonatos.html">Campeonatos</a></li>
                         <li><a href="#contact">Contato</a></li>
                     </ul>
                 </div>

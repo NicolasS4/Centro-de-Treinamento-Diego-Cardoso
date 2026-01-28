@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campeonatos - Centro de Treinamento Diego Cardoso</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gallery-section {
+            padding: 80px 0;
+        }
+        
+        .gallery-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+        
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 10px 25px;
+            background: var(--card-bg);
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 250px;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        .gallery-overlay h3 {
+            font-family: 'Oswald', sans-serif;
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+        
+        .gallery-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .tournaments-stats {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 10px;
+            margin-top: 60px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: var(--accent-color);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+        
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+        
+        .lightbox-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            transform: translateY(-50%);
+        }
+        
+        .lightbox-nav button {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .lightbox-nav button:hover {
+            background: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .gallery-item {
+                height: 200px;
+            }
+            
+            .gallery-filters {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-btn {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body class="light-theme">
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="../images/logo/logo.png" alt="Centro de Treinamento Diego Cardoso" id="main-logo">
+                <span>Centro de Treinamento Diego Cardoso</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Início</a></li>
+                    <li><a href="../index.html#about">Sobre</a></li>
+                    <li><a href="professores.html">Professores</a></li>
+                    <li><a href="nossos_atletas.html">Nossos Atletas</a></li>
+                    <li><a href="planos_e_horarios.html">Planos & Horários</a></li>
+                    <li><a href="campeonatos.html">Campeonatos</a></li>
+                    <li><a href="../index.html#contact">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="theme-switch-wrapper">
+                <span class="theme-switch-label">Modo Escuro</span>
+                <label class="theme-switch">
+                    <input type="checkbox" id="theme-checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-internal">
+        <div class="container">
+            <h1>Campeonatos</h1>
+            <p>Galeria de conquistas e momentos marcantes do nosso CT</p>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-intro">
+                <h2>Nossa História em Competições</h2>
+                <p>Conheça os momentos mais marcantes do Centro de Treinamento Diego Cardoso em diversas competições. Cada foto conta uma história de dedicação, superação e conquistas.</p>
+            </div>
+            
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="nacionais">Nacionais</button>
+                <button class="filter-btn" data-filter="estaduais">Estaduais</button>
+                <button class="filter-btn" data-filter="locais">Locais</button>
+                <button class="filter-btn" data-filter="cerimonias">Cerimônias</button>
+            </div>
+            
+            <div class="gallery-grid">
+                <!-- Campeonato 1 -->
+                <div class="gallery-item" data-category="estaduais">
+                    <img src="../images/campeonatos/igarape-acu.png" alt="Campeonato Hadha Dojô">
+                    <div class="gallery-overlay">
+                        <h3>Campeonato Hadha Dojô</h3>
+                        <p>4 medalhas de ouro, 1 troféu</p>
+                    </div>
+                </div>
+                
+                <!-- Campeonato 2 -->
+                <div class="gallery-item" data-category="nacionais">
+                    <img src="../images/campeonatos/maria-fumaca.png" alt="II OPEN Maria Fumaça 2025">
+                    <div class="gallery-overlay">
+                        <h3>II OPEN Maria Fumaça 2025</h3>
+                        <p>2 medalhas de ouro</p>
+                    </div>
+                </div>
+                
+                <!-- Campeonato 3 -->
+                <div class="gallery-item" data-category="estaduais">
+                    <img src="../images/campeonatos/circuito-estadual.png" alt="Circuito Estadual de Jiu-Jitsu 2025">
+                    <div class="gallery-overlay">
+                        <h3>Circuito Estadual de Jiu-Jitsu 2025</h3>
+                        <p>1 medalha de ouro, 1 de prata e 1 de bronze</p>
+                    </div>
+                </div>
+                
+                <!-- Campeonato 4 -->
+                <div class="gallery-item" data-category="nacionais">
+                    <img src="../images/campeonatos/open-int.png" alt="Open internacional de Jiu-Jitsu 2025">
+                    <div class="gallery-overlay">
+                        <h3>Medalha de bronze</h3
+                    </div>
+                </div>
+                
+                <!-- Espaço para novas fotos -->
+                <div class="gallery-item" data-category="cerimonias">
+                    <img src="../images/campeonatos/golden-team-int.png" alt="golden team interno">
+                    <div class="gallery-overlay">
+                        <h3>Crescendo em equipe!</h3>
+                    </div>
+                </div>
+
+                <!--
+                <div class="gallery-item" data-category="estaduais">
+                    <img src="../images/campeonatos/campeonato2.jpg" alt="Novo Estadual">
+                    <div class="gallery-overlay">
+                        <h3>[Campeonato Estadual]</h3>
+                        <p>[Cidade] - [Ano]</p>
+                    </div>
+                    -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <div class="lightbox-nav">
+            <button class="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="lightbox-next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="lightbox-content">
+            <img src="" alt="">
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../images/logo/logo.png" alt="Centro de Treinamento Diego Cardoso" id="footer-logo">
+                    <p>O objetivo é criar pessoas preparadas para a vida e campeões para o mundo</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="../index.html">Início</a></li>
+                        <li><a href="../index.html#about">Sobre</a></li>
+                        <li><a href="professores.html">Professores</a></li>
+                        <li><a href="nossos_atletas.html">Nossos Atletas</a></li>
+                        <li><a href="planos_e_horarios.html">Planos & Horários</a></li>
+                        <li><a href="campeonatos.html">Campeonatos</a></li>
+                        <li><a href="../index.html#contact">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Tv São Francisco N°145, Campina Icoaraci</p>
+                    <p><i class="fas fa-phone"></i> (91) 98176-6737</p>
+                    <p><i class="fas fa-phone"></i> (91) 98086-5679</p>
+                </div>
+                <div class="footer-social">
+                    <h4>Siga-nos</h4>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/ct_diegocardoso/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Centro de Treinamento Diego Cardoso.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../styles/theme-switcher.js"></script>
+    <script>
+        // Sistema de galeria
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = lightbox.querySelector('img');
+            const lightboxClose = lightbox.querySelector('.lightbox-close');
+            const lightboxPrev = lightbox.querySelector('.lightbox-prev');
+            const lightboxNext = lightbox.querySelector('.lightbox-next');
+            
+            let currentImageIndex = 0;
+            const images = Array.from(galleryItems).map(item => ({
+                src: item.querySelector('img').src,
+                title: item.querySelector('h3').textContent,
+                category: item.getAttribute('data-category')
+            }));
+            
+            // Filtro da galeria
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    // Atualizar botão ativo
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filtrar itens
+                    galleryItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Lightbox
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', function() {
+                    currentImageIndex = index;
+                    updateLightbox();
+                    lightbox.classList.add('active');
+                });
+            });
+            
+            lightboxClose.addEventListener('click', function() {
+                lightbox.classList.remove('active');
+            });
+            
+            lightboxPrev.addEventListener('click', function() {
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                updateLightbox();
+            });
+            
+            lightboxNext.addEventListener('click', function() {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                updateLightbox();
+            });
+            
+            function updateLightbox() {
+                lightboxImg.src = images[currentImageIndex].src;
+                lightboxImg.alt = images[currentImageIndex].title;
+            }
+            
+            // Fechar lightbox com ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    lightbox.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

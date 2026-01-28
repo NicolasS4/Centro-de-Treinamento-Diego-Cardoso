@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossos Atletas - Centro de Treinamento Diego Cardoso</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .athletes-filter {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background: var(--card-bg);
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .athletes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .athlete-card {
+            background: var(--accent-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .athlete-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .athlete-image {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .athlete-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .athlete-card:hover .athlete-image img {
+            transform: scale(1.1);
+        }
+        
+        .athlete-info {
+            padding: 20px;
+        }
+        
+        .athlete-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: var(--secondary-color);
+        }
+        
+        .athlete-belt {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .athlete-achievements {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .athlete-achievements h4 {
+            font-family: 'Oswald', sans-serif;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .athlete-achievements ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .athlete-achievements li {
+            padding: 5px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .athlete-achievements li:before {
+            content: "🏆";
+            position: absolute;
+            left: 0;
+        }
+        
+        .notes-section {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 10px;
+            margin-top: 60px;
+        }
+        
+        .notes-section h3 {
+            font-family: 'Oswald', sans-serif;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        .note-item {
+            background: var(--accent-color);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        /* Estilo para seção vazia */
+        .empty-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+        
+        .empty-section i {
+            font-size: 4rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body class="light-theme">
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="../images/logo/logo.png" alt="Centro de Treinamento Diego Cardoso" id="main-logo">
+                <span>Centro de Treinamento Diego Cardoso</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Início</a></li>
+                    <li><a href="../index.html#about">Sobre</a></li>
+                    <li><a href="professores.html">Professores</a></li>
+                    <li><a href="nossos_atletas.html">Nossos Atletas</a></li>
+                    <li><a href="planos_e_horarios.html">Planos & Horários</a></li>
+                    <li><a href="campeonatos.html">Campeonatos</a></li>
+                    <li><a href="../index.html#contact">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="theme-switch-wrapper">
+                <span class="theme-switch-label">Modo Escuro</span>
+                <label class="theme-switch">
+                    <input type="checkbox" id="theme-checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-internal">
+        <div class="container">
+            <h1>Nossos Atletas</h1>
+            <p>Conheça os campeões que representam nosso CT</p>
+        </div>
+    </section>
+
+    <section class="athletes">
+        <div class="container">
+            <div class="athletes-filter">
+                <h2>Nossos Destaques</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="black-belt">Faixas Pretas</button>
+                    <button class="filter-btn" data-filter="competitors">Competidores</button>
+                    <button class="filter-btn" data-filter="kids">Kids</button>
+                </div>
+            </div>
+
+            <div class="athletes-grid">
+                <!-- Atleta 1 - Paulo Vinicius (Faixa Preta) -->
+                <div class="athlete-card" data-category="black-belt competitors">
+                    <div class="athlete-image">
+                        <img src="../images/atletas/paulo-vinicius.png" alt="Paulo Vinicius">
+                    </div>
+                    <div class="athlete-info">
+                        <h3 class="athlete-name">Paulo Vinicius</h3>
+                        <p class="athlete-belt">Faixa Preta</p>
+                        <p>Atleta profissional com mais de 10 anos de experiência.</p>
+                        
+                        <div class="athlete-achievements">
+                            <h4>Principais Conquistas:</h4>
+                            <ul>
+                                <li>Campeão Paraense 2025</li>
+                                <li>Campeão Copa Podio Paraense</li>
+                                <li>Campeão Open Brasil</li>
+                                <li>Campeão Prime Jiu-Jitsu</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Atleta 2 - Espaço para novo atleta -->
+                <!--
+                <div class="athlete-card" data-category="competitors">
+                    <div class="athlete-image">
+                        <img src="../images/atletas/placeholder-atleta.jpg" alt="Novo Atleta">
+                    </div>
+                    <div class="athlete-info">
+                        <h3 class="athlete-name">[Nome do Atleta 2]</h3>
+                        <p class="athlete-belt">[Faixa]</p>
+                        <p>[Breve descrição do atleta]</p>
+                        
+                        <div class="athlete-achievements">
+                            <h4>Principais Conquistas:</h4>
+                            <ul>
+                                <li>[Conquista 1]</li>
+                                <li>[Conquista 2]</li>
+                                <li>[Conquista 3]</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Atleta 3 - Espaço para novo atleta -->
+                <!--
+                <div class="athlete-card" data-category="kids">
+                    <div class="athlete-image">
+                        <img src="../images/atletas/placeholder-atleta.jpg" alt="Novo Atleta Kids">
+                    </div>
+                    <div class="athlete-info">
+                        <h3 class="athlete-name">[Nome do Atleta Kids]</h3>
+                        <p class="athlete-belt">[Faixa Infantil]</p>
+                        <p>[Breve descrição do atleta mirim]</p>
+                        
+                        <div class="athlete-achievements">
+                            <h4>Principais Conquistas:</h4>
+                            <ul>
+                                <li>[Conquista 1]</li>
+                                <li>[Conquista 2]</li>
+                                <li>[Conquista 3]</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                -->
+            </div>
+
+            <!-- Seção para futuros atletas -->
+            <div class="empty-section">
+                <i class="fas fa-user-plus"></i>
+                <h3>Em breve mais atletas!</h3>
+                <p>Estamos continuamente desenvolvendo novos talentos. Em breve teremos mais atletas para apresentar.</p>
+            </div>
+
+            <!-- Seção de Anotações para Futuros Atletas 
+            <div class="notes-section">
+                <h3>Anotações para Novos Atletas</h3>
+                
+                <div class="note-item">
+                    <h4>Atleta 1 - Paulo Vinicius</h4>
+                    <p><strong>Faixa:</strong> Preta</p>
+                    <p><strong>Categoria:</strong> Adulto</p>
+                    <p><strong>Anos de treino:</strong> 10+</p>
+                    <p><strong>Conquistas:</strong> Campeão Paraense 2025, Copa Podio Paraense, Open Brasil, Prime Jiu-Jitsu</p>
+                </div>
+
+                <div class="note-item">
+                    <h4>Modelo para Novos Atletas:</h4>
+                    <p><strong>Estrutura de cadastro:</strong></p>
+                    <ul>
+                        <li>Nome completo</li>
+                        <li>Faixa atual</li>
+                        <li>Categoria (idade/peso)</li>
+                        <li>Tempo de treino</li>
+                        <li>Principais conquistas</li>
+                        <li>Foto em uniforme do CT</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../images/logo/logo.png" alt="Centro de Treinamento Diego Cardoso" id="footer-logo">
+                    <p>O objetivo é criar pessoas preparadas para a vida e campeões para o mundo</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="../index.html">Início</a></li>
+                        <li><a href="../index.html#about">Sobre</a></li>
+                        <li><a href="professores.html">Professores</a></li>
+                        <li><a href="nossos_atletas.html">Nossos Atletas</a></li>
+                        <li><a href="planos_e_horarios.html">Planos & Horários</a></li>
+                        <li><a href="campeonatos.html">Campeonatos</a></li>
+                        <li><a href="../index.html#contact">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> R. Sarg. Joaquim Resende, 147 - Campina de Icoaraci, Belém - PA</p>
+                    <p><i class="fas fa-phone"></i> (91) 98176-6737</p>
+                    <p><i class="fas fa-phone"></i> (91) 98086-5679</p>
+                </div>
+                <div class="footer-social">
+                    <h4>Siga-nos</h4>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/ct_diegocardoso/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Centro de Treinamento Diego Cardoso.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../styles/theme-switcher.js"></script>
+    <script>
+        // Filtro de atletas
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const athleteCards = document.querySelectorAll('.athlete-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    // Show/hide athlete cards based on filter
+                    athleteCards.forEach(card => {
+                        if (filterValue === 'all') {
+                            card.style.display = 'block';
+                        } else {
+                            const categories = card.getAttribute('data-category');
+                            if (categories.includes(filterValue)) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
